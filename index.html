@@ -70,7 +70,7 @@
     @media(max-width:600px){.map-style-tools{align-items:stretch}.map-tabs{width:100%}.map-tab{flex:1}.map-frame{height:480px}.map-legend{max-width:90%}}
 
 
-    /* Safe Roblox verification and automatic aircraft search */
+    /* PFTracker sign-in opens externally; this site never claims shared authentication. */
     .verified-account{display:flex;align-items:center;gap:15px;background:#0d2538;border:1px solid #2e4e65;border-radius:13px;padding:17px;margin:18px 0}
     .verified-avatar{height:58px;width:58px;flex:0 0 58px;border-radius:13px;border:1px solid #4b829d;background:#1d4156;display:grid;place-items:center;overflow:hidden;color:#90e3ff}
     .verified-avatar svg{width:28px;height:28px}
@@ -129,14 +129,14 @@
 <body>
   <div class="device"><div class="screen">
     <header class="statusbar"><div class="status-left"><span id="local-clock">--:--</span><span>PROJECT FLIGHT • PILOT OPERATIONS</span></div><div class="status-right"><span class="status-dot"></span><span>MAP READY</span><span id="utc-clock">--:--Z</span><span data-icon="battery"></span></div></header>
-    <div class="appbar"><div class="brand-inline"><div class="brand-emblem" data-icon="plane"></div><div><div class="brand-name">AEROBOARD<span style="color:#59c9ff">.</span></div><div class="brand-tag">PILOT EFB / PROJECT FLIGHT</div></div></div><div class="appbar-right"><div class="app-pill"><span data-icon="shield-check"></span> SIMULATOR USE ONLY</div><div class="app-pill"><span data-icon="cloud-off"></span> ROBLOX VERIFICATION</div><div class="avatar" id="avatar-initials">PF</div></div></div>
+    <div class="appbar"><div class="brand-inline"><div class="brand-emblem" data-icon="plane"></div><div><div class="brand-name">AEROBOARD<span style="color:#59c9ff">.</span></div><div class="brand-tag">PILOT EFB / PROJECT FLIGHT</div></div></div><div class="appbar-right"><div class="app-pill"><span data-icon="shield-check"></span> SIMULATOR USE ONLY</div><div class="app-pill"><span data-icon="radar"></span> PFTRACKER ACCESS</div><div class="avatar" id="avatar-initials">PF</div></div></div>
     <div class="workspace">
       <nav class="sidebar" aria-label="Main navigation">
         <button class="navbtn active" data-nav="dashboard" title="Dashboard"><span data-icon="layout-dashboard"></span><span>Home</span></button>
         <button class="navbtn" data-nav="planner" title="Flight Planner"><span data-icon="route"></span><span>Planner</span></button>
         <button class="navbtn" data-nav="map" title="Route Map"><span data-icon="map"></span><span>Map</span></button>
         <button class="navbtn" data-nav="tracker" title="Live PFTracker website"><span data-icon="radar"></span><span>PFTracker</span></button>
-        <button class="navbtn" data-nav="connect" title="Roblox Flight Link"><span data-icon="globe"></span><span>Roblox</span></button>
+        <button class="navbtn" data-nav="connect" title="PFTracker sign-in"><span data-icon="log-in"></span><span>Connect</span></button>
         <button class="navbtn" data-nav="airports" title="Airports"><span data-icon="landmark"></span><span>Airports</span></button>
         <button class="navbtn" data-nav="checklists" title="Checklists"><span data-icon="list-checks"></span><span>Checklist</span></button>
         <button class="navbtn" data-nav="tools" title="Pilot Tools"><span data-icon="calculator"></span><span>Tools</span></button>
@@ -168,7 +168,7 @@
           <div class="page-head"><div><div class="eyebrow">PROJECT FLIGHT / IN-GAME MAP</div><h1>Navigation map<span style="color:var(--accent)">.</span></h1><p>Your Project Flight map images — route planning, zoom, pan, waypoint chart.</p></div><div class="h-actions"><button class="btn" id="fit-map"><span data-icon="maximize"></span> Fit route</button><button class="btn" id="reset-map"><span data-icon="map"></span> Full map</button><button class="btn" data-go="planner"><span data-icon="route"></span> Edit plan</button><button class="btn" data-go="tracker"><span data-icon="radar"></span> Live PFTracker</button></div></div>
           <div class="map-style-tools"><div class="map-tabs" role="group" aria-label="Map style"><button type="button" class="map-tab" data-mapstyle="illustrated" aria-pressed="false">Illustrated</button><button type="button" class="map-tab" data-mapstyle="terrain" aria-pressed="true">Terrain</button><button type="button" class="map-tab" data-mapstyle="waypoints" aria-pressed="false">Waypoints</button></div><button class="btn small" id="toggle-airports" aria-pressed="true">Airports: ON</button><button class="btn small" id="toggle-route" aria-pressed="true">Route: ON</button><button class="btn small" id="add-custom-pin">+ Pin waypoint</button><button class="btn small danger" id="clear-custom-pins">Clear pins</button></div>
           <div class="map-layout"><div><div class="map-frame" id="map-frame"><div class="map-fallback" id="map-fallback"><span data-icon="map"></span><b>Loading Project Flight map</b><span>The built-in map is initializing from the included artwork.</span></div><div id="map"></div><div class="map-head"><span class="tag">IN-GAME MAP / USER-SUPPLIED</span><span class="tag" id="map-status-chip">NOT TRACKING</span></div><div class="map-legend"><span class="circle"></span> Departure • <span style="color:#2decb6">●</span> Destination • <span style="color:#ffa85d">◆</span> Your pins • <span style="color:#54c9fa">━━</span> Planned route</div></div><div class="map-status"><span>Drag to pan • Scroll/pinch to zoom • Select an airport for route actions</span><strong id="map-scale">TERRAIN</strong></div></div>
-          <div class="map-side"><div class="card card-pad"><div class="card-title"><h2>Selected route</h2><span class="tag">PLAN</span></div><div class="preview-codes"><strong id="map-dep">EGKK</strong><span data-icon="arrow-right"></span><strong id="map-arr">LCLK</strong></div><hr class="rule"><div class="summary-list"><div><span>Departure</span><b id="map-dep-name">London Gatwick</b></div><div><span>Destination</span><b id="map-arr-name">Larnaca</b></div><div><span>Route distance</span><b id="map-distance">Not entered</b></div><div><span>Estimated time</span><b id="map-time">—</b></div></div><p class="map-info">Routes use the map artwork, not geographical coordinates. To show a waypoint on your route, add a pin and type its label in the planner's Waypoints box.</p></div><div class="notice"><span data-icon="info"></span><span>Map artwork is from your supplied screenshots. Only some airports have calibrated interactive locations. Waypoint names printed on the screenshot remain part of the image; your own pins are interactive. Not an official chart.</span></div><div id="live-map-side-slot"><div class="card card-pad" style="margin-top:12px"><div class="card-title"><h2>Your aircraft</h2><span class="tag">OPTIONAL</span></div><div class="summary-list"><div><span>Feed</span><b id="map-live-state">OFFLINE</b></div><div><span>Flight</span><b id="map-live-flight">—</b></div></div><button style="margin-top:14px" class="btn primary" data-go="connect">Verify Roblox</button></div></div></div></div>
+          <div class="map-side"><div class="card card-pad"><div class="card-title"><h2>Selected route</h2><span class="tag">PLAN</span></div><div class="preview-codes"><strong id="map-dep">EGKK</strong><span data-icon="arrow-right"></span><strong id="map-arr">LCLK</strong></div><hr class="rule"><div class="summary-list"><div><span>Departure</span><b id="map-dep-name">London Gatwick</b></div><div><span>Destination</span><b id="map-arr-name">Larnaca</b></div><div><span>Route distance</span><b id="map-distance">Not entered</b></div><div><span>Estimated time</span><b id="map-time">—</b></div></div><p class="map-info">Routes use the map artwork, not geographical coordinates. To show a waypoint on your route, add a pin and type its label in the planner's Waypoints box.</p></div><div class="notice"><span data-icon="info"></span><span>Map artwork is from your supplied screenshots. Only some airports have calibrated interactive locations. Waypoint names printed on the screenshot remain part of the image; your own pins are interactive. Not an official chart.</span></div><div id="live-map-side-slot"><div class="card card-pad" style="margin-top:12px"><div class="card-title"><h2>Your aircraft</h2><span class="tag">OPTIONAL</span></div><div class="summary-list"><div><span>Feed</span><b id="map-live-state">OFFLINE</b></div><div><span>Flight</span><b id="map-live-flight">—</b></div></div><button style="margin-top:14px" class="btn primary" data-go="connect">Connect with PFTracker</button></div></div></div></div>
         </section>
         <section class="page" id="page-tracker" aria-label="PFTracker live site">
           <div class="tracker-toolbar">
@@ -193,22 +193,22 @@
           </div>
         </section>
         <section class="page" id="page-connect">
-          <div class="page-head"><div><div class="eyebrow">OFFICIAL ROBLOX IDENTITY</div><h1>Connect your Roblox<span style="color:var(--accent)">.</span></h1><p>One verification button. Your account ID can then be used to search an authorized Project Flight tracking service automatically.</p></div><div class="h-actions"><button class="btn" data-go="map"><span data-icon="map"></span> Open map</button><a class="btn" href="https://canary.project-flight.com/" target="_blank" rel="noopener noreferrer">PFTracker <span data-icon="external-link"></span></a></div></div>
+          <div class="page-head"><div><div class="eyebrow">PFTRACKER / ACCOUNT ACCESS</div><h1>Connect with PFTracker<span style="color:var(--accent)">.</span></h1><p>Sign in to the official PFTracker website in a new tab. Your pilot iPad stays open.</p></div><div class="h-actions"><button class="btn" data-go="map"><span data-icon="map"></span> Your map</button><button class="btn" data-go="tracker"><span data-icon="radar"></span> Tracker viewer</button></div></div>
           <div class="live-grid"><div class="card card-pad">
-            <div class="card-title"><h2>Roblox account</h2><span class="tag" id="auth-badge">NOT VERIFIED</span></div>
-            <p class="connect-note">Verify using <b>Roblox’s official OAuth page</b>. This website does not ask for a Roblox password, security code, or cookie. Only your public Roblox identity is requested.</p>
-            <div class="verified-account"><div class="verified-avatar" id="verified-avatar"><span data-icon="shield-check"></span></div><div><b id="verified-name">No account connected</b><small id="verified-id">Verify to identify your player</small></div></div>
-            <div class="connect-buttons"><button class="btn primary" id="verify-roblox"><span data-icon="shield-check"></span> Verify with Roblox</button><button class="btn" id="disconnect-roblox" disabled>Disconnect</button></div>
-            <div class="map-status"><span class="connect-state" id="verify-state">NOT VERIFIED</span><span id="verify-explain">Requires the website owner's Roblox OAuth client ID.</span></div>
+            <div class="card-title"><h2>PFTracker sign-in</h2><span class="tag" id="auth-badge">EXTERNAL LOGIN</span></div>
+            <p class="connect-note">Click below to open <b>PFTracker's own website</b>. If you are not signed in, PFTracker will direct you to its Roblox sign-in flow. Your password and account session stay on PFTracker, not on AEROBOARD.</p>
+            <div class="verified-account"><div class="verified-avatar" id="verified-avatar"><span data-icon="radar"></span></div><div><b id="verified-name">PFTracker account</b><small id="verified-id">Use its sign-in page in a separate tab</small></div></div>
+            <div class="connect-buttons"><button class="btn primary" id="verify-roblox"><span data-icon="external-link"></span> Sign in with PFTracker</button><button class="btn" id="open-live-tracker"><span data-icon="radar"></span> View Live Tracker</button></div>
+            <div class="map-status"><span class="connect-state" id="verify-state">READY TO OPEN</span><span id="verify-explain">No Roblox OAuth Client ID is required to open PFTracker.</span></div>
             <hr class="rule"/>
-            <div class="card-title"><h2>Automatic aircraft search</h2><span class="tag">OPT-IN</span></div>
-            <div class="auto-tracking-status"><span class="scan-indicator" id="scan-indicator"></span><div><b id="connect-status">NOT CONNECTED</b><small id="connect-explain">Verify your Roblox account to begin.</small></div></div>
-            <div class="connect-buttons"><button class="btn" id="scan-again" disabled><span data-icon="refresh-cw"></span> Scan for my aircraft</button><button class="btn" id="center-live"><span data-icon="crosshair"></span> Follow aircraft</button><button class="btn" id="test-feed">Try demo marker</button></div>
-            <p class="mini-hint">Auto scanning works only if the website owner has configured a permitted API that supplies Project Flight aircraft positions. Roblox verification by itself <b>cannot reveal in-game coordinates</b>. A demo marker is explicitly simulated.</p>
+            <div class="card-title"><h2>Aircraft tracking</h2><span class="tag">ON PFTRACKER</span></div>
+            <div class="auto-tracking-status"><span class="scan-indicator" id="scan-indicator"></span><div><b id="connect-status">AVAILABLE ON PFTRACKER</b><small id="connect-explain">Once you have signed in, use the PFTracker tab or the new browser tab to track your aircraft.</small></div></div>
+            <div class="connect-buttons"><button class="btn" id="open-pftracker-tab"><span data-icon="map"></span> PFTracker inside iPad</button><button class="btn" id="center-live"><span data-icon="crosshair"></span> Follow demo marker</button><button class="btn" id="test-feed">Try demo marker</button></div>
+            <p class="mini-hint"><b>Important:</b> PFTracker does not send its login status or aircraft coordinates back to this GitHub Pages website. Returning from its tab does not verify your identity here. The live tracking happens on PFTracker, and some browsers may block its embedded view.</p>
           </div>
-          <div class="card card-pad"><div class="card-title"><h2>Aircraft telemetry</h2><span class="tag" id="telemetry-badge">NO LIVE DATA</span></div>
-            <div class="live-metrics"><div class="live-metric"><span>CALLSIGN</span><strong id="live-callsign">—</strong></div><div class="live-metric"><span>SPEED</span><strong id="live-speed">—</strong></div><div class="live-metric"><span>ALTITUDE</span><strong id="live-altitude">—</strong></div><div class="live-metric"><span>HEADING</span><strong id="live-heading">—</strong></div></div><hr class="rule"/><div class="summary-list"><div><span>Last update</span><b id="live-last">—</b></div><div><span>Map position</span><b id="live-coords">—</b></div><div><span>Mode</span><b id="live-mode">Not connected</b></div></div>
-            <div class="mini-tip" style="margin-top:18px"><b>For the website owner</b><p style="margin:6px 0 0">Edit <code>config.js</code> to add your Roblox OAuth Client ID and, if approved, a Project Flight position-provider URL. Visitors will only see the Verify button; they never enter an API URL.</p></div>
+          <div class="card card-pad"><div class="card-title"><h2>Map telemetry preview</h2><span class="tag" id="telemetry-badge">NO LIVE DATA</span></div>
+            <div class="live-metrics"><div class="live-metric"><span>CALLSIGN</span><strong id="live-callsign">—</strong></div><div class="live-metric"><span>SPEED</span><strong id="live-speed">—</strong></div><div class="live-metric"><span>ALTITUDE</span><strong id="live-altitude">—</strong></div><div class="live-metric"><span>HEADING</span><strong id="live-heading">—</strong></div></div><hr class="rule"/><div class="summary-list"><div><span>Last update</span><b id="live-last">—</b></div><div><span>Map position</span><b id="live-coords">—</b></div><div><span>Mode</span><b id="live-mode">External tracker only</b></div></div>
+            <div class="mini-tip" style="margin-top:18px"><b>How this works</b><p style="margin:6px 0 0">The <b>View Live Tracker</b> button opens the real PFTracker tracking website. The telemetry boxes here are only a <b>demo preview</b> until PFTracker approves a third-party live data integration. No player positions are invented.</p></div>
           </div></div>
         </section>
         <section class="page" id="page-airports">
@@ -231,14 +231,13 @@
         </section>
         <section class="page" id="page-notes">
           <div class="page-head"><div><div class="eyebrow">PILOT JOURNAL</div><h1>Scratchpad notes<span style="color:var(--accent)">.</span></h1><p>Gate information, ATC clearances and roleplay notes.</p></div><div class="h-actions"><button class="btn" id="export-notes"><span data-icon="download"></span> Export .txt</button><button class="btn danger" id="clear-notes"><span data-icon="trash-2"></span> Clear</button></div></div>
-          <div class="notes-layout"><div class="card card-pad"><div class="card-title"><h2>Flight scratchpad</h2><span class="tag" id="notes-save-indicator">AUTO-SAVED LOCALLY</span></div><textarea class="textarea notes-textarea" id="notes-input" placeholder="Departure clearance...\nPushback and taxi instructions...\nAssigned runway...\nCruise and descent notes..."></textarea><p class="help" style="margin-bottom:0">Saved as you type. This is a local browser notepad — no shared multiplayer sync.</p></div><div class="card card-pad"><div class="card-title"><h2>Captain's profile</h2><span class="tag">PERSONALIZE</span></div><div class="field"><label for="pilot-name">DISPLAY NAME</label><input class="input" id="pilot-name" maxlength="35" placeholder="Pilot" /></div><p class="help">The name will appear on your home dashboard.</p><hr class="rule"><div class="card-title"><h2>Quick tips</h2></div><div class="tip-list"><div><span data-icon="shield-check"></span><span>Roblox verification contacts Roblox directly; notes and plans are stored locally.</span></div><div><span data-icon="save"></span><span>Save your plan in Logbook to keep multiple routes.</span></div><div><span data-icon="map"></span><span>Live positions require an authorized Project Flight data source; signing in alone cannot reveal them.</span></div><div><span data-icon="alert-triangle"></span><span>For flight simulation and roleplay only. Never use this website for real-world flight operations.</span></div></div></div></div>
+          <div class="notes-layout"><div class="card card-pad"><div class="card-title"><h2>Flight scratchpad</h2><span class="tag" id="notes-save-indicator">AUTO-SAVED LOCALLY</span></div><textarea class="textarea notes-textarea" id="notes-input" placeholder="Departure clearance...\nPushback and taxi instructions...\nAssigned runway...\nCruise and descent notes..."></textarea><p class="help" style="margin-bottom:0">Saved as you type. This is a local browser notepad — no shared multiplayer sync.</p></div><div class="card card-pad"><div class="card-title"><h2>Captain's profile</h2><span class="tag">PERSONALIZE</span></div><div class="field"><label for="pilot-name">DISPLAY NAME</label><input class="input" id="pilot-name" maxlength="35" placeholder="Pilot" /></div><p class="help">The name will appear on your home dashboard.</p><hr class="rule"><div class="card-title"><h2>Quick tips</h2></div><div class="tip-list"><div><span data-icon="shield-check"></span><span>PFTracker sign-in opens a separate tab. This site never sees your login or password.</span></div><div><span data-icon="save"></span><span>Save your plan in Logbook to keep multiple routes.</span></div><div><span data-icon="map"></span><span>PFTracker tracks aircraft on its own website; copying positions here requires provider access.</span></div><div><span data-icon="alert-triangle"></span><span>For flight simulation and roleplay only. Never use this website for real-world flight operations.</span></div></div></div></div>
         </section>
-        <div class="footerline"><span>© 2026 AEROBOARD • UNOFFICIAL PROJECT FLIGHT COMPANION • NOT AFFILIATED WITH ROBLOX OR PROJECT FLIGHT</span><span>PROFILE VERIFIED USING OFFICIAL ROBLOX LOGIN</span></div>
+        <div class="footerline"><span>© 2026 AEROBOARD • UNOFFICIAL PROJECT FLIGHT COMPANION • NOT AFFILIATED WITH ROBLOX OR PROJECT FLIGHT</span><span>PFTRACKER SIGN-IN OCCURS ON ITS OWN WEBSITE</span></div>
       </main>
     </div>
   </div></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="config.js"></script>
   <script src="assets/map-engine.js"></script>
   <script>
   (() => {
@@ -511,43 +510,17 @@
     $('export-notes').addEventListener('click',()=>{download('aeroboard-pilot-notes.txt',state.notes,'text/plain;charset=utf-8');toast('Notes exported')});
     $('clear-notes').addEventListener('click',()=>{if(!confirm('Clear all scratchpad notes?'))return;state.notes='';$('notes-input').value='';store();toast('Scratchpad cleared')});
 
-    // ROBLOX IDENTITY: official OAuth 2.0 authorization code + PKCE (public browser client).
-    // Registration requires a valid Client ID + exact GitHub Pages redirect URL.
-    // Roblox OAuth does NOT grant in-game Project Flight coordinates.
-    const APP_CONFIG=(window.AEROBOARD_CONFIG&&typeof window.AEROBOARD_CONFIG==='object')?window.AEROBOARD_CONFIG:{};
-    const ROBLOX_CLIENT_ID=String(APP_CONFIG.robloxClientId||'').trim();
-    const TRACKING_URL=String(APP_CONFIG.flightPositionsEndpoint||'').trim();
-    const TRACK_INTERVAL=Math.max(5000,Math.min(60000,Number(APP_CONFIG.refreshIntervalMs)||10000));
-    const hasClient=/^\d{5,30}$/.test(ROBLOX_CLIENT_ID);
-    const hasTracker=TRACKING_URL.startsWith('https://');
-    let verifiedProfile=null,livePosition=null,liveMode='offline',liveTimer=null,fetchBusy=false,oauthAccessToken=null;
-    const endPolling=()=>{if(liveTimer){clearInterval(liveTimer);liveTimer=null}};
-    const rand=(length=32)=>{const b=new Uint8Array(length);crypto.getRandomValues(b);return btoa(String.fromCharCode(...b)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
-    async function challengeFor(verifier){return btoa(String.fromCharCode(...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(verifier))))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
-    const redirectUri=()=>location.origin+location.pathname;
-    function verifyStatus(status,message,kind=''){
-      $('verify-state').textContent=status;$('verify-state').className='connect-state '+kind;
-      $('verify-explain').textContent=message;$('auth-badge').textContent=status;
+    // PFTracker is an external service. Opening its login cannot authenticate this origin.
+    // We deliberately do not read cookies, iframe content, accounts, or undocumented APIs.
+    const PFTRACKER_URL='https://tracker.project-flight.com/';
+    let livePosition=null,liveMode='offline';
+    function verifyStatus(status,message){
+      $('verify-state').textContent=status;$('auth-badge').textContent=status;
+      $('verify-explain').textContent=message;
     }
-    function scanStatus(status,message,kind=''){
+    function scanStatus(status,message){
       $('connect-status').textContent=status;$('connect-explain').textContent=message;
       $('map-live-state').textContent=status;$('map-status-chip').textContent=status;
-      $('scan-indicator').className='scan-indicator '+kind;
-    }
-    function updateIdentity(){
-      const p=verifiedProfile;
-      $('verified-name').textContent=p?(p.preferred_username||p.name||'Roblox player'):'No account connected';
-      $('verified-id').textContent=p?`Roblox ID ${p.sub}`:'Verify to identify your player';
-      $('disconnect-roblox').disabled=!p;$('scan-again').disabled=!p;
-      if(p?.picture&&/^https:\/\//.test(p.picture)){
-        const img=document.createElement('img');img.alt='Your Roblox avatar';img.referrerPolicy='no-referrer';img.src=p.picture;
-        $('verified-avatar').replaceChildren(img);
-      }else{$('verified-avatar').textContent=p?'✓':'R'}
-    }
-    function resetTelemetry(){
-      livePosition=null;liveMode='offline';if(liveLayer)liveLayer.clearLayers();
-      $('live-callsign').textContent='—';$('live-speed').textContent='—';$('live-altitude').textContent='—';$('live-heading').textContent='—';
-      $('live-last').textContent='—';$('live-coords').textContent='—';$('live-mode').textContent='Not connected';$('map-live-flight').textContent='—';$('telemetry-badge').textContent='NO LIVE DATA';
     }
     function displayPosition(p,mode){
       livePosition=p;liveMode=mode;
@@ -557,8 +530,8 @@
       $('live-heading').textContent=p.heading===null?'—':Math.round(p.heading)+'°';
       $('live-coords').textContent=(p.x*100).toFixed(1)+'%, '+(p.y*100).toFixed(1)+'%';
       $('live-last').textContent=new Date().toLocaleTimeString();
-      $('live-mode').textContent=mode==='demo'?'SIMULATED DEMO':'AUTHORIZED LIVE FEED';
-      $('telemetry-badge').textContent=mode==='demo'?'DEMO ONLY':'LIVE / AUTHORIZED';
+      $('live-mode').textContent='SIMULATED DEMO';
+      $('telemetry-badge').textContent='DEMO ONLY';
       $('map-live-flight').textContent=p.callsign||'—';
       redrawLiveMarker();
     }
@@ -566,112 +539,36 @@
       if(!mapInstance||!liveLayer)return;
       liveLayer.clearLayers();if(!livePosition)return;
       const p=livePosition;
-      const marker=L.marker(pinCoord([p.x,p.y]),{icon:L.divIcon({className:'',html:`<div class="pf-flight-icon ${liveMode==='demo'?'demo':''}" style="transform:rotate(${p.heading??0}deg)">✈</div>`,iconSize:[30,30],iconAnchor:[15,15]})}).addTo(liveLayer);
-      marker.bindTooltip((liveMode==='demo'?'DEMO • ':'')+(p.callsign||'Your aircraft'),{direction:'top'});
+      const marker=L.marker(pinCoord([p.x,p.y]),{icon:L.divIcon({className:'',html:`<div class="pf-flight-icon demo" style="transform:rotate(${p.heading??0}deg)">✈</div>`,iconSize:[30,30],iconAnchor:[15,15]})}).addTo(liveLayer);
+      marker.bindTooltip('DEMO • '+(p.callsign||'Simulated aircraft'),{direction:'top'});
     }
-    function parsePosition(raw){
-      // Position provider contract is owner-configured. Do not scrape Roblox/PFTracker.
-      let data=raw;
-      if(Array.isArray(raw))data=raw;
-      else if(raw&&typeof raw==='object')data=raw.players||raw.flights||raw.aircraft||raw.positions||raw;
-      const uid=String(verifiedProfile.sub),username=String(verifiedProfile.preferred_username||'').toLowerCase();
-      if(Array.isArray(data)){
-        data=data.find(p=>String(p?.robloxUserId??p?.userId??p?.user_id??'')===uid||(!p?.robloxUserId&&!p?.userId&&!p?.user_id&&username&&String(p?.username||p?.robloxUsername||'').toLowerCase()===username));
-        if(!data)throw new Error('NO_FLIGHT');
-      }
-      if(data?.position&&typeof data.position==='object')data={...data,...data.position};
-      if(!data||typeof data!=='object')throw new Error('NO_FLIGHT');
-      const returnedId=String(data.robloxUserId??data.userId??data.user_id??'');
-      if(returnedId&&returnedId!==uid)throw new Error('NO_FLIGHT');
-      const returnedName=String(data.username||data.robloxUsername||'').toLowerCase();
-      if(!returnedId&&returnedName&&username&&returnedName!==username)throw new Error('NO_FLIGHT');
-      const x=Number(data.x??data.mapX),y=Number(data.y??data.mapY);
-      if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>1||y<0||y>1)throw new Error('BAD_COORDINATES');
-      // Do not display old cached positions as if they were fresh.
-      if(data.updatedAt||data.timestamp){const t=Date.parse(data.updatedAt||data.timestamp);if(Number.isFinite(t)&&Date.now()-t>120000)throw new Error('STALE_FLIGHT')}
-      const number=v=>(v===null||v===undefined||v===''||!Number.isFinite(Number(v)))?null:Number(v);
-      return {x,y,heading:number(data.heading),speed:number(data.speed),altitude:number(data.altitude),callsign:String(data.callsign||'—').slice(0,35)};
-    }
-    function buildTrackerUrl(){
-      const url=TRACKING_URL.replaceAll('{userId}',encodeURIComponent(verifiedProfile.sub)).replaceAll('{username}',encodeURIComponent(verifiedProfile.preferred_username||''));
-      const dest=new URL(url,location.origin);if(dest.protocol!=='https:')throw new Error('Configured provider must use HTTPS');return dest;
-    }
-    async function scanAircraft(){
-      if(!verifiedProfile||!hasTracker||fetchBusy)return;
-      fetchBusy=true;scanStatus('SCANNING','Looking for an active Project Flight aircraft…','scanning');
-      try{
-        const res=await fetch(buildTrackerUrl().href,{method:'GET',mode:'cors',credentials:'omit',headers:{'Accept':'application/json'},cache:'no-store',signal:AbortSignal.timeout(8000)});
-        if(res.status===404||res.status===204)throw new Error('NO_FLIGHT');
-        if(!res.ok)throw new Error('HTTP_'+res.status);
-        const position=parsePosition(await res.json());
-        displayPosition(position,'live');scanStatus('AIRCRAFT FOUND','Position updated '+new Date().toLocaleTimeString(),'connected');
-      }catch(e){
-        resetTelemetry();let msg=String(e.message||e);
-        if(msg==='NO_FLIGHT')scanStatus('NOT FLYING','No active aircraft found for this verified Roblox account. Scanning continues.','');
-        else if(msg==='STALE_FLIGHT')scanStatus('DATA STALE','The provider has not updated this position recently.','error');
-        else if(msg==='BAD_COORDINATES')scanStatus('BAD POSITION DATA','Provider must return terrain-map x/y normalized from 0 to 1.','error');
-        else scanStatus('TRACKING UNAVAILABLE',msg.startsWith('HTTP_')?'Tracking provider returned '+msg.replace('HTTP_','HTTP '):'Tracking provider unavailable or blocked by CORS.','error');
-      }finally{fetchBusy=false}
-    }
-    function startScanner(){
-      endPolling();resetTelemetry();
-      if(!verifiedProfile){scanStatus('NOT CONNECTED','Verify with Roblox to begin.');return}
-      if(!hasTracker){scanStatus('NO TRACKING SOURCE','Account verified, but the website owner has not connected an authorized Project Flight location provider.');return}
-      scanAircraft();liveTimer=setInterval(()=>{if(!document.hidden)scanAircraft()},TRACK_INTERVAL);
-    }
-    $('verify-roblox').addEventListener('click',async()=>{
-      if(!hasClient){verifyStatus('SETUP REQUIRED','Website owner: add your Roblox OAuth Client ID to config.js.','error');toast('Roblox OAuth Client ID is not configured');return}
-      if(!crypto?.subtle||location.protocol!=='https:'){verifyStatus('HTTPS REQUIRED','Open the website via GitHub Pages with HTTPS.','error');return}
-      try{
-        const verifier=rand(48),stateToken=rand(24),nonce=rand(24);
-        sessionStorage.setItem('pf-oauth-pending',JSON.stringify({verifier,state:stateToken,nonce,at:Date.now(),redirect:redirectUri()}));
-        const query=new URLSearchParams({client_id:ROBLOX_CLIENT_ID,redirect_uri:redirectUri(),response_type:'code',scope:'openid profile',state:stateToken,nonce,code_challenge:await challengeFor(verifier),code_challenge_method:'S256'});
-        location.assign('https://apis.roblox.com/oauth/v1/authorize?'+query.toString());
-      }catch(e){verifyStatus('FAILED','Could not start Roblox verification.','error')}
+    let externalLoginOpened=false;
+    $('verify-roblox').addEventListener('click',()=>{
+      // Called from a real click to avoid popup blockers. PFTracker handles its own Roblox sign-in.
+      const newTab=window.open(PFTRACKER_URL,'_blank','noopener,noreferrer');
+      externalLoginOpened=true;
+      verifyStatus('PFTRACKER OPENED','PFTracker was opened in a new tab. Sign in there, then return and select View Live Tracker. This iPad cannot confirm your session.');
+      $('verified-name').textContent='Continue on PFTracker';
+      $('verified-id').textContent='Login and live tracking stay on its own website';
+      toast('PFTracker opened in a new tab');
     });
-    $('disconnect-roblox').addEventListener('click',()=>{
-      endPolling();oauthAccessToken=null;verifiedProfile=null;resetTelemetry();updateIdentity();
-      verifyStatus('NOT VERIFIED','Account disconnected from this browser.');scanStatus('NOT CONNECTED','Verify to start tracking.');
+    $('open-live-tracker').addEventListener('click',()=>{
+      // Open a separate tab to guarantee the native site still works if embedding is restricted.
+      window.open(PFTRACKER_URL,'_blank','noopener,noreferrer');
+      verifyStatus('TRACKER OPENED','Use PFTracker in the new tab to search for your aircraft. This site does not receive your PFTracker session.');
     });
-    $('scan-again').addEventListener('click',()=>{if(!verifiedProfile)return;startScanner()});
+    $('open-pftracker-tab').addEventListener('click',()=>{navigate('tracker');toast('PFTracker viewer opened. If blank, use Open Tracker.')});
     $('test-feed').addEventListener('click',()=>{
-      endPolling();displayPosition({x:.58,y:.48,heading:135,speed:245,altitude:12000,callsign:'DEMO-001'},'demo');
-      scanStatus('DEMO ONLY','This is a simulated position, not Project Flight location data.');toast('Demo aircraft placed on the map');
+      displayPosition({x:.58,y:.48,heading:135,speed:245,altitude:12000,callsign:'DEMO-001'},'demo');
+      scanStatus('DEMO ONLY','A simulated aircraft is on your map. Real positions are visible on PFTracker.');
+      toast('Demo aircraft placed on the map');
     });
     $('center-live').addEventListener('click',()=>{
-      if(!livePosition){toast('No aircraft position to follow. Try demo for preview.');return}
+      if(!livePosition){toast('Use Try demo marker first; live positions stay on PFTracker.');return}
       navigate('map');initMap();if(mapInstance)mapInstance.setView(pinCoord([livePosition.x,livePosition.y]),Math.max(mapInstance.getZoom(),0.75));
     });
-    async function finishRobloxCallback(){
-      const u=new URL(location.href),code=u.searchParams.get('code'),err=u.searchParams.get('error');if(!code&&!err)return;
-      // Remove authorization data from address bar and browser history immediately.
-      const scrub=new URL(location.href);['code','state','error','error_description'].forEach(k=>scrub.searchParams.delete(k));
-      history.replaceState(null,'',scrub.pathname+scrub.search+scrub.hash);
-      navigate('connect');
-      if(err){verifyStatus('CANCELLED','Roblox login was not completed: '+err,'error');return}
-      let pending=null;try{pending=JSON.parse(sessionStorage.getItem('pf-oauth-pending')||'null')}catch(e){}sessionStorage.removeItem('pf-oauth-pending');
-      if(!pending||pending.state!==u.searchParams.get('state')||Date.now()-pending.at>600000||pending.redirect!==redirectUri()){
-        verifyStatus('SECURITY CHECK FAILED','Login state did not match this browser. Please try verifying again.','error');return;
-      }
-      verifyStatus('CHECKING','Confirming identity with Roblox…');
-      try{
-        const body=new URLSearchParams({grant_type:'authorization_code',code,client_id:ROBLOX_CLIENT_ID,redirect_uri:redirectUri(),code_verifier:pending.verifier});
-        const tokenRes=await fetch('https://apis.roblox.com/oauth/v1/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body});
-        if(!tokenRes.ok)throw Error('Roblox did not accept the authorization code (HTTP '+tokenRes.status+').');
-        const tokens=await tokenRes.json();if(!tokens.access_token)throw Error('Roblox did not return an access token');
-        const infoRes=await fetch('https://apis.roblox.com/oauth/v1/userinfo',{headers:{Authorization:'Bearer '+tokens.access_token}});
-        if(!infoRes.ok)throw Error('Could not confirm account information (HTTP '+infoRes.status+').');
-        const identity=await infoRes.json();if(!/^\d+$/.test(String(identity.sub||'')))throw Error('No valid Roblox user ID returned');
-        oauthAccessToken=tokens.access_token; // kept in memory only, never stored or sent to tracker
-        verifiedProfile={sub:String(identity.sub),name:String(identity.name||''),preferred_username:String(identity.preferred_username||identity.name||''),picture:String(identity.picture||'')};
-        updateIdentity();verifyStatus('VERIFIED','Signed in through Roblox. The page can now search for your aircraft.','ok');startScanner();
-      }catch(e){oauthAccessToken=null;verifiedProfile=null;updateIdentity();verifyStatus('VERIFICATION FAILED',String(e.message||e)+' Check client ID, approved redirect URI, and browser CORS.','error')}
-    }
-    updateIdentity();
-    if(!hasClient)verifyStatus('SETUP REQUIRED','Website owner must register an OAuth app and set robloxClientId in config.js.');
-    else verifyStatus('NOT VERIFIED','Click Verify with Roblox to connect securely.');
-    scanStatus('NOT CONNECTED','Verify Roblox to look for a live flight.');
-    finishRobloxCallback();
+    verifyStatus('READY TO OPEN','No Roblox OAuth Client ID is needed. Open PFTracker and sign in on its own website.');
+    scanStatus('ON PFTRACKER','Use PFTracker to see actual live aircraft. This site cannot read its login or position data.');
 
     decorateIcons();bindPlanner();updateClock();setInterval(updateClock,1000);renderAirports();renderChecklist();calculateTools();
     const hash=location.hash.slice(1);if(['dashboard','planner','map','airports','checklists','tools','logbook','notes','connect','tracker'].includes(hash))navigate(hash);
